@@ -1,15 +1,13 @@
-var path = require('path');
-var fs = require('fs');
+const path = require('path');
+const fs = require('fs');
+const request = require('request');
 
 let dpath = path.join(__dirname, "../data.json");
 
-console.log(dpath);
+request('https://reddit.com/r/popular.json', (err, resultfromrequest, body) => {
+    if(err) console.log(err);
 
-fs.readFile(dpath,{
-    encoding: "UTF-8"
-}, (err, data) => {
-    var myinfo = JSON.parse(data);
-
-    console.log(myinfo);
-    console.log(myinfo.location);
-})
+    fs.writeFile(dpath, resultfromrequest.body, err => {
+        if(err) console.log(err);
+    })
+});
