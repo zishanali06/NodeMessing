@@ -11,5 +11,5 @@ fs.readFile(dpath,{
     var myinfo = JSON.parse(data);
 
     console.log(myinfo);
-    console.log(`THIS IS WHERE I STAY: ${myinfo.location}`);
+    console.log(myinfo.location);
 })
